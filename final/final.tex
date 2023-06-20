@@ -1,0 +1,256 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  12pt,
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newlength{\cslentryspacingunit} % times entry-spacing
+\setlength{\cslentryspacingunit}{\parskip}
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+  \let\oldpar\par
+  \def\par{\hangindent=\cslhangindent\oldpar}
+  \fi
+  % set entry spacing
+  \setlength{\parskip}{#2\cslentryspacingunit}
+ }%
+ {}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+\usepackage{polyglossia}
+\setmainlanguage{english}
+\usepackage{booktabs}
+\usepackage{caption}
+\captionsetup[table]{skip=10pt}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={World Happiness Report},
+  pdfauthor={Suleymanzade Savalan},
+  colorlinks=true,
+  linkcolor={Maroon},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{World Happiness Report}
+\author{Suleymanzade Savalan}
+\date{}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+Write your abstract here.
+\end{abstract}
+
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
+
+The World Happiness Report represents a significant effort in researching factors influencing global happiness levels. By providing a thorough analysis measuring various elements across diverse countries concerning happiness measures globally, this report offers genuine perspectives through which stakeholders derive legitimate insights into what drives human satisfaction with life experiences. Consequently, policymakers gain valuable tools to promote enhancements towards overall well-being for individuals worldwide effectively.
+The World Happiness Report has a diverse set of objectives to achieve. Its fundamental purpose is to counteract the conventional understanding that solely relying on economic indicators like GDP can suffice for measuring social progress accurately. By incorporating various factors like well-being perception based on topics including social support availability, life expectancy rates or level of freedom granted alongside corruption levels reflecting on society's behavior along such lines into their analysis methodology -- this report acknowledges that well-being exists in multiple domains requiring comprehensive scrutiny with intention though not exclusively limit to promote development from different angles rather than being fixated solely on financial metrics.
+Second, the World Happiness Report is critical in promoting cross-cultural learning and understanding. The study helps policymakers and academics to find successful practices and policies that contribute to well-being by comparing happiness levels while assessing the underlying reasons across different nations. This comparative research is critical for developing international collaboration and motivating positive change in nations that want to increase happiness among their residents.
+
+\hypertarget{literature-review}{%
+\subsection{Literature Review}\label{literature-review}}
+
+In this book(\protect\hyperlink{ref-layard2020can}{Layard, 2020}), Richard Layard explores the factors contributing to happiness and well-being. Drawing on research from the World Happiness Report, he discusses the implications of happiness for ethical decision-making and proposes policies that prioritize well-being as a fundamental societal goal. This paper{[}Easterlin (\protect\hyperlink{ref-easterlin2010happiness}{2010}) discusses the Easterlin paradox, which suggests that beyond a certain income threshold, higher economic growth does not lead to increased happiness. It references the World Happiness Report and other studies to explore the complex relationship between economic development, income, and happiness, and provides implications for public policy. This study(\protect\hyperlink{ref-deneve2012estimating}{De Neve \& Oswald, 2012}) investigates the relationship between subjective well-being and income using data from the World Happiness Report and a sibling-based analysis. It explores the influence of life satisfaction and positive affect on future income, suggesting a bidirectional relationship between well-being and economic outcomes. This study (\protect\hyperlink{ref-aknin2020prosocial}{Aknin et al., 2020}) investigates the relationship between prosocial spending and well-being across different cultures, drawing upon data from the World Happiness Report. The authors find a consistent positive association between spending money on others and subjective well-being, suggesting the universal nature of this relationship. This chapter (\protect\hyperlink{ref-tov2019wellbeing}{Tov \& Diener, 2019}) discusses the relationship between trust, cooperation, democracy, and national well-being. It draws upon data from the World Happiness Report to highlight the importance of social and political trust in promoting happiness and well-being at the societal level. The authors emphasize the need for trust-building strategies to foster well-being. This study (\protect\hyperlink{ref-frijters2004money}{Frijters et al., 2004}) examines the relationship between income and life satisfaction using data from East Germany after reunification. It references the World Happiness Report in discussing the positive impact of increasing real income on subjective well-being. The findings highlight the importance of economic factors in shaping happiness levels.
+
+\hypertarget{data}{%
+\section{Data}\label{data}}
+
+In this section, discuss the source of the data set you use in your study, if you have done any operation on the raw data, these operations and the summary statistics about the data set. In this section, it is mandatory to have a table (Table \ref{tab:summary}) containing summary statistics (mean, standard deviation, minimum, maximum, etc. values) of all variables. Make the necessary references to your tables as shown in the previous sentence (\protect\hyperlink{ref-perkins:1991}{\textbf{perkins:1991?}}).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(here)}
+\NormalTok{Happiness }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\FunctionTok{here}\NormalTok{(}\StringTok{"data/2022.csv"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## \begin{table}[ht]
+## \centering
+## \caption{Summary Statistics} 
+## \label{tab:summary}
+## \begin{tabular}{lccccc}
+##   \toprule
+##  & Mean & Std.Dev & Min & Median & Max \\ 
+##   \midrule
+## Freedom to make life choices &  &  & Inf &  & -Inf \\ 
+##   GDP per capita &  &  & Inf &  & -Inf \\ 
+##   Generosity &  &  & Inf &  & -Inf \\ 
+##   Happiness score &  &  & Inf &  & -Inf \\ 
+##   Healthy life expectancy &  &  & Inf &  & -Inf \\ 
+##   Perceptions of corruption &  &  & Inf &  & -Inf \\ 
+##   Social support &  &  & Inf &  & -Inf \\ 
+##   Whisker-high &  &  & Inf &  & -Inf \\ 
+##   Whisker-low &  &  & Inf &  & -Inf \\ 
+##    \bottomrule
+## \end{tabular}
+## \end{table}
+\end{verbatim}
+
+\hypertarget{methods-and-data-analysis}{%
+\section{Methods and Data Analysis}\label{methods-and-data-analysis}}
+
+In this section describe the methods that you use to achieve the purpose of the study. You should use the appropriate analysis methods (such as hypothesis tests and correlation analysis) that we covered in the class. If you want, you can also use other methods that we haven't covered. If you think some method is more suitable for the purpose of the analysis and the data set, you can use that method (\protect\hyperlink{ref-newbold:2003}{\textbf{newbold:2003?}}; \protect\hyperlink{ref-verzani:2014}{\textbf{verzani:2014?}}; \protect\hyperlink{ref-wickham:2014}{\textbf{wickham:2014?}}; \protect\hyperlink{ref-wooldridge:2015a}{\textbf{wooldridge:2015a?}}).
+
+For example, if you are performing regression analysis, discuss your predicted equation in this section. Write your equations and mathematical expressions usin
+
+This section should also include different tables and plots. You can add histograms, scatter plots (such as Figure , box plots, etc. Make the necessary references to your figures as shown in the previous sentence.
+
+\hypertarget{conclusion}{%
+\section{Conclusion}\label{conclusion}}
+
+Summarize the results of your analysis in this section. Discuss to what extent your results responded to the research question you identified at the beginning and how this work could be improved in the future.
+
+\textbf{References section is created automatically by Rmarkdown. There is no need to change the references section in the draft file.}
+
+\textbf{\emph{You shouldn't delete the last 3 lines. Those lines are required for References section.}}
+
+\newpage
+
+\hypertarget{references}{%
+\section{References}\label{references}}
+
+\hypertarget{refs}{}
+\begin{CSLReferences}{1}{0}
+\leavevmode\vadjust pre{\hypertarget{ref-aknin2020prosocial}{}}%
+Aknin, L. B., Barrington-Leigh, C. P., Dunn, E. W., Helliwell, J. F., Burns, J., Biswas-Diener, R., \& Norton, M. I. (2020). Prosocial spending and well-being: Cross-cultural evidence for a psychological universal. \emph{Journal of Personality and Social Psychology}, \emph{119}(2), 634--649.
+
+\leavevmode\vadjust pre{\hypertarget{ref-deneve2012estimating}{}}%
+De Neve, J.-E., \& Oswald, A. J. (2012). Estimating the influence of life satisfaction and positive affect on later income using sibling fixed effects. \emph{Proceedings of the National Academy of Sciences}, \emph{109}(49), 19953--19958.
+
+\leavevmode\vadjust pre{\hypertarget{ref-easterlin2010happiness}{}}%
+Easterlin, R. A. (2010). Happiness, growth, and public policy. \emph{Economic Inquiry}, \emph{48}(4), 661--672.
+
+\leavevmode\vadjust pre{\hypertarget{ref-frijters2004money}{}}%
+Frijters, P., Haisken-DeNew, J. P., \& Shields, M. A. (2004). Money does matter! Evidence from increasing real income and life satisfaction in east germany following reunification. \emph{American Economic Review}, \emph{94}(3), 730--740.
+
+\leavevmode\vadjust pre{\hypertarget{ref-layard2020can}{}}%
+Layard, R. (2020). \emph{Can we be happier? Evidence and ethics}. Penguin UK.
+
+\leavevmode\vadjust pre{\hypertarget{ref-tov2019wellbeing}{}}%
+Tov, W., \& Diener, E. (2019). The well-being of nations: Linking together trust, cooperation, and democracy. In E. M. Uslaner (Ed.), \emph{Oxford handbook of social and political trust} (pp. 1--25). Oxford University Press.
+
+\end{CSLReferences}
+
+\end{document}

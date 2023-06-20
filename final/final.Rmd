@@ -1,7 +1,7 @@
 ---
-title: "Title"
+title: "World Happiness Report"
 author: 
-  - Last Name, First Name[^1]
+  - Suleymanzade Savalan
 bibliography: ../bibliography/biblio.bib
 csl: ../csl/apa.csl
 header-includes:
@@ -34,41 +34,29 @@ knitr::opts_chunk$set(cache = FALSE, echo = TRUE, message = FALSE, warning = FAL
 <!-- ======================================================================= -->
 <!-- ============================== FOOTNOTES ============================== -->
 <!-- ======================================================================= -->
-[^1]: Student ID, [Github Repo](https://github.com/YOUR_USER_NAME_HERE/YOUR_REPO_NAME_HERE)
+[^1]: 20080795, [Github Repo](https://github.com/SavalanS/Final)
 
-# Important Information About Midterm
-
-\colorbox{BurntOrange}{WRITE YOUR GITHUB REPO LINK ON LINE 37 IN THIS FILE!}
-
-**Project Proposal submisson will be done by uploading a zip file to the ekampus system along with the Github repo link. If you do not upload a zip file to the system and do not provide a Github repo link, you will be deemed not to have entered the midterm and final exams.**
-
-**You must upload your project folder (`YourStudentID.zip` file) to *ekampus.ankara.edu.tr* until 9 June 2023, 23:59.**
-
-\colorbox{WildStrawberry}{Read the README.md file in the project folder for more information.}
 
 # Introduction
-This outline has been created to assist you in writing your project assignment. You should cite all the sources you use, articles, presentations, projects, etc. Quoting and referencing gives readers the opportunity to access the resources you refer. **Even though you use your own words, if you are conveying the ideas of others in your work, you have to document the source of these ideas. Otherwise, you are committing academic plagiarism.** For example, you can refer to @aydinonat:2007 for academic writing rules. You can find lots of online resources on this topic.
-
-The sections in your project assignment should definitely include the sections in this text. Apart from the sections used here, you can use different subsections. When writing your project, use this file as a draft and adapt its content to your purposes.
-
-In this section, mention the purpose and importance of your work in a few paragraphs.
+The World Happiness Report represents a significant effort in researching factors influencing global happiness levels. By providing a thorough analysis measuring various elements across diverse countries concerning happiness measures globally, this report offers genuine perspectives through which stakeholders derive legitimate insights into what drives human satisfaction with life experiences. Consequently, policymakers gain valuable tools to promote enhancements towards overall well-being for individuals worldwide effectively.
+The World Happiness Report has a diverse set of objectives to achieve. Its fundamental purpose is to counteract the conventional understanding that solely relying on economic indicators like GDP can suffice for measuring social progress accurately. By incorporating various factors like well-being perception based on topics including social support availability, life expectancy rates or level of freedom granted alongside corruption levels reflecting on society's behavior along such lines into their analysis methodology – this report acknowledges that well-being exists in multiple domains requiring comprehensive scrutiny with intention though not exclusively limit to promote development from different angles rather than being fixated solely on financial metrics.
+Second, the World Happiness Report is critical in promoting cross-cultural learning and understanding. The study helps policymakers and academics to find successful practices and policies that contribute to well-being by comparing happiness levels while assessing the underlying reasons across different nations. This comparative research is critical for developing international collaboration and motivating positive change in nations that want to increase happiness among their residents.
 
 ## Literature Review
 
-In this section, discuss the articles you have read on the subject by giving references. This is a narrative citation @chang:2013. This one is a parenthetical citation [@chang:2013]. **Do not summarize each article individually under a separate title.** In the literature review section, **at least six** articles must be cited [@newbold:2003; @verzani:2014; @wickham:2014; @wooldridge:2015a].
+In this book[@layard2020can], Richard Layard explores the factors contributing to happiness and well-being. Drawing on research from the World Happiness Report, he discusses the implications of happiness for ethical decision-making and proposes policies that prioritize well-being as a fundamental societal goal. This paper[@easterlin2010happiness discusses the Easterlin paradox, which suggests that beyond a certain income threshold, higher economic growth does not lead to increased happiness. It references the World Happiness Report and other studies to explore the complex relationship between economic development, income, and happiness, and provides implications for public policy. This study[@deneve2012estimating] investigates the relationship between subjective well-being and income using data from the World Happiness Report and a sibling-based analysis. It explores the influence of life satisfaction and positive affect on future income, suggesting a bidirectional relationship between well-being and economic outcomes. This study [@aknin2020prosocial] investigates the relationship between prosocial spending and well-being across different cultures, drawing upon data from the World Happiness Report. The authors find a consistent positive association between spending money on others and subjective well-being, suggesting the universal nature of this relationship. This chapter [@tov2019wellbeing] discusses the relationship between trust, cooperation, democracy, and national well-being. It draws upon data from the World Happiness Report to highlight the importance of social and political trust in promoting happiness and well-being at the societal level. The authors emphasize the need for trust-building strategies to foster well-being. This study [@frijters2004money] examines the relationship between income and life satisfaction using data from East Germany after reunification. It references the World Happiness Report in discussing the positive impact of increasing real income on subjective well-being. The findings highlight the importance of economic factors in shaping happiness levels.
 
 # Data
 In this section, discuss the source of the data set you use in your study, if you have done any operation on the raw data, these operations and the summary statistics about the data set. In this section, it is mandatory to have a table (Table \ref{tab:summary}) containing summary statistics (mean, standard deviation, minimum, maximum, etc. values) of all variables. Make the necessary references to your tables as shown in the previous sentence [@perkins:1991].
 
-R codes for the analysis should start in this section. In this section, you should include the codes that imports the data set into R and the codes that generate summary statistics.
 
 ```{r}
 library(tidyverse)
 library(here)
-survey <- read_csv(here("data/survey.csv"))
+Happiness <- read_csv(here("data/2022.csv"))
 ```
 
-Note that code options are edited in some of the code chunks in the Rmd file.
+
 
 ```{r, echo=FALSE}
 library(xtable) 
@@ -76,11 +64,11 @@ library(summarytools)
 st_options(lang = "en")
 ```
 
-With the `echo=FALSE` option, prevent the codes from appearing in the derived pdf file and report your results in tables.
 
-```{r results='asis', echo=FALSE}
-survey %>%
-  select("sex", "credits", "handedness", "height", "handspan") %>% 
+```{r, echo=FALSE}
+Happiness %>%
+  select(`Happiness score`, `Whisker-high`, `Whisker-low`, `GDP per capita`, `Social support`, `Healthy life expectancy`, `Freedom to make life choices`, `Generosity`, `Perceptions of corruption`) %>% 
+  mutate(across(everything(), as.numeric)) %>%  # Convert variables to numeric
   descr(stats = c("mean", "sd", "min", "med", "max"), transpose = TRUE) %>% 
   xtable(caption = "Summary Statistics",
          label = "tab:summary",
@@ -89,26 +77,17 @@ survey %>%
 ```
 
 
+
 # Methods and Data Analysis
 In this section describe the methods that you use to achieve the purpose of the study. You should use the appropriate analysis methods (such as hypothesis tests and correlation analysis) that we covered in the class. If you want, you can also use other methods that we haven't covered. If you think some method is more suitable for the purpose of the analysis and the data set, you can use that method [@newbold:2003; @verzani:2014; @wickham:2014; @wooldridge:2015a].
 
-For example, if you are performing regression analysis, discuss your predicted equation in this section. Write your equations and mathematical expressions using $LaTeX$.
-
-$$
-Y_t = \beta_0 + \beta_N N_t + \beta_P P_t + \beta_I I_t + \varepsilon_t
-$$
-
-This section should also include different tables and plots. You can add histograms, scatter plots (such as Figure \@ref(fig:plot)), box plots, etc. Make the necessary references to your figures as shown in the previous sentence.
+For example, if you are performing regression analysis, discuss your predicted equation in this section. Write your equations and mathematical expressions usin
 
 
-```{r plot, fig.align='center', fig.cap='An Awesome Plot'}
-survey %>% 
-  ggplot(aes(x = handedness, y = handspan)) +
-  geom_point() +
-  geom_smooth() +
-  scale_x_continuous("Handedness") + 
-  scale_y_continuous("Handspan")
-```
+This section should also include different tables and plots. You can add histograms, scatter plots (such as Figure , box plots, etc. Make the necessary references to your figures as shown in the previous sentence.
+
+
+
 
 
 # Conclusion
